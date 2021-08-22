@@ -12,7 +12,12 @@ def suppliers():
 @app.route("/suppliers/<int:supplier_id>")
 def products(supplier_id):
     products = database.get_supplier_products(supplier_id)
-    suppliers = database.get_all_suppliers()
-    supplier=suppliers[supplier_id-1]
+    suppliers = database.query("""SELECT CompanyName FROM Supplier WHERE Id = ? """, supplier_id)
+    supplier=suppliers[0]
     suppliername=supplier['CompanyName']
     return render_template ('products.html', products=products, supplier=suppliername)
+
+@app.route("/categories")
+def categories():
+    categories = database.get_categories()
+    return render_template ('categories.html', categories=categories)
