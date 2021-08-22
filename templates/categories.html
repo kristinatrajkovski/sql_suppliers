@@ -21,7 +21,7 @@
             <tbody>
                 {%for category in categories%}
                 <tr>
-                    <td>{{category['CategoryName']}}</td>
+                    <td><a href="{{url_for('cproducts', category_id=category['Id'])}}">{{category['CategoryName']}}</a></td>
                     <td>{{category['Description']}}</td>
                     <td>{{category['ProductCount']}}</td>
                 </tr>

@@ -21,3 +21,11 @@ def products(supplier_id):
 def categories():
     categories = database.get_categories()
     return render_template ('categories.html', categories=categories)
+
+@app.route("/categories/<int:category_id>")
+def cproducts(category_id):
+    products = database.get_category_products(category_id)
+    categories = database.query("""SELECT CategoryName FROM Category WHERE Id = ? """, category_id)
+    category=categories[0]
+    categoryname=category['CategoryName']
+    return render_template ('cproducts.html', products=products, category=categoryname)

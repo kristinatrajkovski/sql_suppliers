@@ -34,9 +34,12 @@ def get_supplier_products(supplier_id):
     return query("""SELECT * FROM Product WHERE SupplierId = ? """, supplier_id )
 
 def get_categories():
-    return query("""SELECT Category.CategoryName, Category.Description, COUNT (Product.CategoryId) AS ProductCount FROM Product
+    return query("""SELECT Category.CategoryName, Category.Description, Category.Id, COUNT (Product.CategoryId) AS ProductCount FROM Product
 
 INNER JOIN Category
 	ON Product.CategoryId = Category.Id
 
 GROUP BY CategoryId """)
+
+def get_category_products(category_id):
+    return query("""SELECT * FROM Product INNER JOIN Supplier ON Product.SupplierId = Supplier.Id WHERE CategoryId = ? """, category_id )
