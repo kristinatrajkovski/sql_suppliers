@@ -5,6 +5,5 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    facts = database.get_all_facts()
-    return render_template ('index.html', facts = facts)
-  
+    suppliers = database.get_all_suppliers()
+    return render_template ('index.html', suppliers = suppliers)

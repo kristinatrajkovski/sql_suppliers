@@ -19,11 +19,11 @@
                 </tr>
             </thead>
             <tbody>
-                {%for fact in facts%}
+                {%for supplier in suppliers%}
                 <tr>
-                    <td>{{fact['CompanyName']}}</td>
-                    <td>{{fact['City']}}</td>
-                    <td>{{fact['Country']}}</td>
+                    <td>{{supplier['CompanyName']}}</td>
+                    <td>{{supplier['City']}}</td>
+                    <td>{{supplier['Country']}}</td>
                 </tr>
                 {% endfor %}
               </tbody>

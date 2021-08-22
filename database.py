@@ -21,5 +21,5 @@ def query(query_text):
     return dicts
 
 
-def get_all_facts():
+def get_all_suppliers():
     return query("""SELECT * FROM Supplier""")
